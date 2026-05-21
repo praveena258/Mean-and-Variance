@@ -53,50 +53,50 @@ PRAVEENA D
 ```
 import numpy as np
 
-L=[int(i) for i in input().split()]
+L = [int(i) for i in input("Enter arrival data: ").split()]
 
-N=len(L); M=max(L)
+N = len(L)
+M = max(L)
 
-x=list();f=list()
+x = []
+f = []
 
-for i in range (M+1):
+for i in range(M + 1):
+    c = 0
+    for j in range(N):
+        if L[j] == i:
+            c = c + 1
+    f.append(c)
+    x.append(i)
 
-c = 0
+sf = np.sum(f)
 
-for j in range(N):
-    
-    if L[j]==i:
-    
-        c=c+1
-        
-f.append(c)
+p = []
 
-x.append(i)
-sf=np.sum(f)
+for i in range(M + 1):
+    p.append(f[i] / sf)
 
-p=list()
+print("x\tP(x)")
+for i in range(len(x)):
+    print(x[i], "\t", p[i])
 
-for i in range(M+1):
+mean = np.inner(x, p)
 
-p.append(f[i]/sf)
-mean=np.inner(x,p)
+EX2 = np.inner(np.square(x), p)
 
-EX2=np.inner(np.square(x),p)
+var = EX2 - mean**2
 
-var=EX2-mean**2
+SD = np.sqrt(var)
 
-SD=np.sqrt(var)
-
-print("The Mean arrival rate is %.3f "%mean)
-
-print("The Variance of arrival from feeder is %.3f "%var)
-
-print("The Standard deviation of arrival from feeder is %.3F "%SD)
+print("The Mean arrival rate is %.3f" % mean)
+print("The Variance of arrival from feeder is %.3f" % var)
+print("The Standard deviation of arrival from feeder is %.3f" % SD)
 ```
 
 # Output : 
 
-<img width="983" height="145" alt="image" src="https://github.com/user-attachments/assets/76079208-fdd5-4c2f-9538-be9e191f2103" />
+<img width="780" height="337" alt="image" src="https://github.com/user-attachments/assets/43402099-62c2-4946-ba75-c85ba683472b" />
+
 
 # Results :
 
